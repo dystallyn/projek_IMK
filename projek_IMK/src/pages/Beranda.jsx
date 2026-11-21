@@ -111,8 +111,31 @@ const LOMBA_LIST = [
   },
 ];
 
-export default function Beranda() {
-  const [activeNav, setActiveNav] = useState("beranda");
+// export default function Beranda() {
+//   const [activeNav, setActiveNav] = useState("beranda");
+//   const [searchQuery, setSearchQuery] = useState("");
+//   const [activeCategory, setActiveCategory] = useState("Semua");
+//   const [selectedLomba, setSelectedLomba] = useState(null);
+//   const [isBuatTimOpen, setIsBuatTimOpen] = useState(false);
+
+//   const filteredLomba = LOMBA_LIST.filter((item) => {
+//     const matchCategory =
+//       activeCategory === "Semua" || item.category === activeCategory;
+//     const keyword = searchQuery.trim().toLowerCase();
+//     const matchSearch =
+//       !keyword ||
+//       item.title.toLowerCase().includes(keyword) ||
+//       item.organizer.toLowerCase().includes(keyword) ||
+//       item.category.toLowerCase().includes(keyword) ||
+//       item.roles.some((role) => role.toLowerCase().includes(keyword));
+
+//     return matchCategory && matchSearch;
+//   });
+
+export default function Beranda({
+  activeNav = "beranda",
+  onNavChange = () => {},
+}) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("Semua");
   const [selectedLomba, setSelectedLomba] = useState(null);
@@ -131,13 +154,12 @@ export default function Beranda() {
 
     return matchCategory && matchSearch;
   });
-
   return (
     <div className="flex min-h-screen flex-col bg-[#FAFAFB] text-[#1E1D24]">
       {/* Header Navigasi */}
       <Header
         activeNav={activeNav}
-        onNavChange={setActiveNav}
+        onNavChange={onNavChange}
         onNotprofClick={() => console.log("Notifikasi / Profil diklik")}
       />
 

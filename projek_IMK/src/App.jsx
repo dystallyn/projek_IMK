@@ -23,9 +23,38 @@
 //   );
 // }
 
-
+import React, { useState } from 'react';
 import Beranda from './pages/Beranda';
+import JelajahTim from './pages/JelajahTim';
+import CariAnggota from './pages/CariAnggota';
 
 export default function App() {
-  return <Beranda />;
+  const [activePage, setActivePage] = useState('beranda');
+
+  if (activePage === 'jelajah-tim') {
+    return (
+      <JelajahTim
+        activeNav="jelajah-tim"
+        onNavChange={setActivePage}
+        onSwitchToCariAnggota={() => setActivePage('cari-anggota')}
+      />
+    );
+  }
+
+  if (activePage === 'cari-anggota') {
+    return (
+      <CariAnggota
+        activeNav="jelajah-tim"
+        onNavChange={setActivePage}
+        onSwitchToJelajahTim={() => setActivePage('jelajah-tim')}
+      />
+    );
+  }
+
+  return (
+    <Beranda
+      activeNav={activePage}
+      onNavChange={setActivePage}
+    />
+  );
 }

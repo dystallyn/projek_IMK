@@ -34,9 +34,9 @@ const INFO_SLIDES = [
     title: "9 posisi tim sedang terbuka",
     description: "Frontend, riset, desain, dan strategi bisnis.",
     buttonText: "Jelajah tim",
+    targetPage: "jelajah-tim",
     image: figure2Img,
     imageCredit: "Foto: Vitaly Gariev / Unsplash",
-    onButtonClick: () => console.log("Buka halaman Jelajah Tim"),
   },
   {
     id: 2,
@@ -45,9 +45,9 @@ const INFO_SLIDES = [
     title: "2 dosen sesuai bidang timmu",
     description: "Lihat keahlian dan kuota bimbingan yang tersedia.",
     buttonText: "Lihat dosen",
+    targetPage: "dosen",
     image: figureImg,
     imageCredit: "Foto: Vitaly Gariev / Unsplash",
-    onButtonClick: () => console.log("Buka halaman Dosen"),
   },
 ];
 
@@ -154,6 +154,12 @@ export default function Beranda({
 
     return matchCategory && matchSearch;
   });
+
+  const infoSlides = INFO_SLIDES.map((slide) => ({
+    ...slide,
+    onButtonClick: () => onNavChange(slide.targetPage),
+  }));
+
   return (
     <div className="flex min-h-screen flex-col bg-[#FAFAFB] text-[#1E1D24]">
       {/* Header Navigasi */}
@@ -174,7 +180,7 @@ export default function Beranda({
         />
 
         {/* Banner Informasi Terbaru (default ke slide ke-3 sesuai desain) */}
-        <Info slides={INFO_SLIDES} initialSlide={2} />
+        <Info slides={infoSlides} initialSlide={0} />
 
         {/* Section Lomba Pilihan */}
         <section className="mx-auto mt-10 max-w-6xl px-3 sm:px-6">

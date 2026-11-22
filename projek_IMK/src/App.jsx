@@ -27,6 +27,9 @@ import React, { useState } from 'react';
 import Beranda from './pages/Beranda';
 import JelajahTim from './pages/JelajahTim';
 import CariAnggota from './pages/CariAnggota';
+import TimSaya from './pages/TimSaya';
+import JadwalDiskusi from './pages/JadwalDiskusi';
+import Dosen from './pages/Dosen';
 
 export default function App() {
   const [activePage, setActivePage] = useState('beranda');
@@ -47,6 +50,35 @@ export default function App() {
         activeNav="jelajah-tim"
         onNavChange={setActivePage}
         onSwitchToJelajahTim={() => setActivePage('jelajah-tim')}
+      />
+    );
+  }
+
+  if (activePage === 'tim-saya') {
+    return (
+      <TimSaya
+        activeNav="tim-saya"
+        onNavChange={setActivePage}
+        onSwitchToJadwal={() => setActivePage('jadwal-diskusi')}
+      />
+    );
+  }
+
+  if (activePage === 'jadwal-diskusi') {
+    return (
+      <JadwalDiskusi
+        activeNav="tim-saya"
+        onNavChange={setActivePage}
+        onSwitchToTimSaya={() => setActivePage('tim-saya')}
+      />
+    );
+  }
+
+  if (activePage === 'dosen') {
+    return (
+      <Dosen
+        activeNav="dosen"
+        onNavChange={setActivePage}
       />
     );
   }

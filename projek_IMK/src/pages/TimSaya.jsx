@@ -206,9 +206,6 @@ export default function TimSaya({
               <p className="text-sm font-semibold text-[#1E1D24]">
                 Dokumen tim
               </p>
-              <p className="mt-1 text-xs text-gray-500">
-                Konten tab Dokumen siap ditambahkan di sini.
-              </p>
             </div>
           )}
 
@@ -216,9 +213,6 @@ export default function TimSaya({
             <div className="rounded-2xl border border-dashed border-gray-300 bg-white py-14 text-center">
               <p className="text-sm font-semibold text-[#1E1D24]">
                 Diskusi tim
-              </p>
-              <p className="mt-1 text-xs text-gray-500">
-                Konten tab Diskusi siap ditambahkan di sini.
               </p>
             </div>
           )}
